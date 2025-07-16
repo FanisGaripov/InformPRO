@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      {% block title %}{% endblock %}
+      {% block description %}{% endblock %}
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+      <style>
+          @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Poppins", sans-serif;
+        }
+        body {
+          min-height: 100%;
+          background: #f1f1f1;
+        }
+        nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 70px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          background: #fff;
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+        }
+        nav .logo {
+          display: flex;
+          align-items: center;
+          margin: 0 24px;
+        }
+        .logo .menu-icon {
+          color: #333;
+          font-size: 24px;
+          margin-right: 14px;
+          cursor: pointer;
+        }
+        .logo .logo-name {
+          color: #333;
+          font-size: 22px;
+          font-weight: 500;
+        }
+        .nav-links {
+          display: flex;
+          align-items: center;
+          margin-left: auto;
+          margin-right: 20px;
+        }
+        .nav-links a {
+          display: flex;
+          align-items: center;
+          margin: 0 10px;
+          padding: 8px 12px;
+          border-radius: 8px;
+          text-decoration: none;
+          color: #333;
+          transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+          background: rgba(64, 112, 244, 0.1);
+          color: #4070f4;
+        }
+        .nav-links a i {
+          margin-right: 8px;
+          font-size: 18px;
+        }
+        nav .sidebar {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          height: 100%;
+          width: 260px;
+          padding: 20px 0;
+          background-color: #fff;
+          box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+          transition: all 0.4s ease;
+        }
+        nav.open .sidebar {
+          left: 0;
+        }
+        .sidebar .sidebar-content {
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 30px 16px;
+        }
+        .sidebar-content .list {
+          list-style: none;
+        }
+        .list .nav-link {
+          display: flex;
+          align-items: center;
+          margin: 8px 0;
+          padding: 14px 12px;
+          border-radius: 8px;
+          text-decoration: none;
+        }
+        .lists .nav-link:hover {
+          background-color: #4070f4;
+        }
+        .nav-link .icon {
+          margin-right: 14px;
+          font-size: 20px;
+          color: #707070;
+        }
+        .nav-link .link {
+          font-size: 16px;
+          color: #707070;
+          font-weight: 400;
+        }
+        .lists .nav-link:hover .icon,
+        .lists .nav-link:hover .link {
+          color: #fff;
+        }
+        .overlay {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          height: 1000vh;
+          width: 200%;
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.4s ease;
+          background: rgba(0, 0, 0, 0.3);
+        }
+        nav.open ~ .overlay {
+          opacity: 1;
+          left: 260px;
+          pointer-events: auto;
+        }
+        @media (max-width: 1100px) {
+          .nav-links {
+            display: none;
+          }
+        }
+      </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <i class="bx bx-menu menu-icon"></i>
+        <a style="display: flex; text-decoration: None; align-items: center;" href="/"><img style="width: 30px; height: auto" src="/static/favicon.png"><span style="margin-left: 5px;" class="logo-name">InformPRO</span></a>
+      </div>
+
+      <div class="nav-links">
+        <a href="/">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="link">Главная</span>
+              </a>
+        <a href="/online-compiler">
+                <i class="bx bx-code-alt icon"></i>
+                <span class="link">Онлайн Python</span>
+              </a>
+        <a href="/exams">
+                <i class="bx bx-book icon"></i>
+                <span class="link">ОГЭ/ЕГЭ</span>
+              </a>
+        <a href="/programming-chatbot">
+                <i class="bx bx-brain icon"></i>
+                <span class="link">ChatGPT</span>
+              </a>
+        <a href="/theory">
+                <i class="bx bx-book-open icon"></i>
+                <span class="link">Теория</span>
+              </a>
+        <a href="/pet-projects">
+                <i class="bx bx-bulb icon"></i>
+                <span class="link">Идеи для пет-проектов</span>
+              </a>
+        <a href="/aboutme">
+                <i class="bx bxs-hand icon"></i>
+                <span class="link">Обо мне</span>
+              </a>
+      </div>
+      <div class="sidebar">
+        <div class="logo">
+          <i class="bx bx-menu menu-icon"></i>
+          <img style="width: 30px; height: auto" src="/static/favicon.png"><span style="margin-left: 5px;" class="logo-name">InformPRO</span>
+        </div>
+        <div class="sidebar-content">
+          <ul class="lists">
+            <li class="list">
+              <a href="/" class="nav-link">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="link">Главная</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="/online-compiler" class="nav-link">
+                <i class="bx bx-code-alt icon"></i>
+                <span class="link">Онлайн Python</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="/exams" class="nav-link">
+                <i class="bx bx-book icon"></i>
+                <span class="link">ОГЭ/ЕГЭ</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="/programming-chatbot" class="nav-link">
+                <i class="bx bx-brain icon"></i>
+                <span class="link">ChatGPT</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="/task-generation" class="nav-link">
+                <i class="bx bx-shuffle icon"></i>
+                <span class="link">Генерация задач</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="/theory" class="nav-link">
+                <i class="bx bx-book-open icon"></i>
+                <span class="link">Теория</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="/pet-projects" class="nav-link">
+                <i class="bx bx-bulb icon"></i>
+                <span class="link">Идеи для пет-проектов</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="/aboutme" class="nav-link">
+                <i class="bx bxs-hand icon"></i>
+                <span class="link">Обо мне</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="overlay"></section>
+     {% block content %}
+        {% endblock %}
+    <script>
+        const navBar = document.querySelector("nav"),
+       menuBtns = document.querySelectorAll(".menu-icon"),
+       overlay = document.querySelector(".overlay");
+     menuBtns.forEach((menuBtn) => {
+       menuBtn.addEventListener("click", () => {
+         navBar.classList.toggle("open");
+       });
+     });
+     overlay.addEventListener("click", () => {
+       navBar.classList.remove("open");
+     });
+    </script>
+  <footer>
+<div class="footer">
+<div class="row">
+<a href="https://vk.com/i_fanis_hello"><i class="fab fa-vk"></i></a>
+<a href="https://t.me/dontcrymygirl"><i class="fab fa-telegram"></i></a>
+<a href="https://github.com/FanisGaripov"><i class="fab fa-github"></i></a>
+</div>
+
+<div class="row">
+<ul>
+<li><a href="/contacts">Контакты</a></li>
+<li><a href="https://naukapro.onrender.com">NaukaPRO</a></li>
+<li><a href="https://chemistrypro.onrender.com">ChemistryPRO</a></li>
+<li><a href="https://physicspro.onrender.com">PhysicsPRO</a></li>
+<li><a href="mailto: garipovfanis1@yandex.ru">Электронная почта</a></li>
+</ul>
+</div>
+
+<div class="row">
+    © 2025 InformPRO. Все права защищены. Принадлежит серии образовательных сайтов <a href="https://naukapro.onrender.com">NaukaPRO</a>
+</div>
+</div>
+</footer>
+  <style>
+
+.footer{
+background:#55555e;
+padding:30px 0px;
+font-family: 'Play', sans-serif;
+text-align:center;
+}
+
+.footer .row{
+width:100%;
+margin:1% 0%;
+padding:0.6% 0%;
+color:white;
+font-size:1em;
+}
+
+.footer .row a{
+text-decoration:none;
+color:white;
+transition:0.5s;
+}
+
+.footer .row a:hover{
+color:#fff;
+}
+
+.footer .row ul{
+width:100%;
+}
+
+.footer .row ul li{
+display:inline-block;
+margin:0px 30px;
+}
+
+.footer .row a i{
+font-size:2em;
+margin:0% 1%;
+}
+
+@media (max-width:720px){
+.footer{
+text-align:left;
+padding:5%;
+}
+.footer .row ul li{
+display:block;
+margin:10px 0px;
+text-align:left;
+}
+.footer .row a i{
+margin:0% 3%;
+}
+}
+  </style>
+  </body>
+</html>

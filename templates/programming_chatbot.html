@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>InformPRO - AI Помощник</title>{% endblock %}
+{% block description %}<meta name="description" content="AI Помощник - ваш персональный ИИ для изучения информатики и программирования. Задавайте вопросы по Python, алгоритмам и подготовке к экзаменам.">{% endblock %}
+
+{% block content %}
+<main class="main-content" style="margin-top: 70px; padding: 20px;">
+    <!-- Основной контейнер -->
+    <div class="chat-container" style="margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 30px;">
+        <!-- Заголовок с иконкой -->
+        <div class="chat-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+            <div style="background: #6a11cb; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                <i class='bx bx-code-alt' style="font-size: 24px; color: white;"></i>
+            </div>
+            <h1 style="font-size: 1.8rem; color: #333; margin: 0;">AI Помощник InformPRO</h1>
+        </div>
+
+        <!-- Форма вопроса -->
+        <form id="questionForm" style="margin-bottom: 30px;">
+            <div style="position: relative;">
+                <input type="text" id="question" name="question"
+                       placeholder="Задайте вопрос по программированию, алгоритмам или подготовке к экзаменам..."
+                       style="width: 100%; padding: 15px 20px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: all 0.3s;">
+                <button type="submit"
+                        style="position: absolute; right: 5px; top: 5px; background: #6a11cb; color: white; border: none; border-radius: 6px; padding: 10px 20px; cursor: pointer; font-weight: 500; transition: all 0.3s;">
+                    Спросить
+                </button>
+            </div>
+        </form>
+
+        <!-- Блок ответа -->
+        <div id="answer" style="min-height: 200px; padding: 20px; border-radius: 8px; background: #f9f9f9; margin-bottom: 30px;"></div>
+
+        <!-- Информационный блок -->
+        <div class="info-section" style="background: #f5f7fa; border-radius: 10px; padding: 25px;">
+            <h3 style="margin-top: 0; color: #6a11cb; font-size: 1.2rem;"><i class='bx bx-info-circle'></i> Как использовать помощник</h3>
+            <p style="margin-bottom: 15px;">Этот ИИ-ассистент поможет вам:</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <i class='bx bx-code-block' style="color: #6a11cb; font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                    <h4 style="margin: 0 0 8px 0; font-size: 1rem;">Программирование</h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; color: #555;">
+                        <li>Объяснение концепций</li>
+                        <li>Разбор ошибок в коде</li>
+                        <li>Примеры реализации</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <i class='bx bx-book' style="color: #6a11cb; font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                    <h4 style="margin: 0 0 8px 0; font-size: 1rem;">Экзамены</h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; color: #555;">
+                        <li>Разбор задач ЕГЭ/ОГЭ</li>
+                        <li>Теоретические вопросы</li>
+                        <li>Советы по подготовке</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="examples" style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #6a11cb;">
+                <h4 style="margin-top: 0; color: #6a11cb; font-size: 1rem;"><i class='bx bx-edit'></i> Примеры вопросов:</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <p style="margin: 5px 0; font-size: 0.9rem;">"Как работает рекурсия?"</p>
+                        <p style="margin: 5px 0; font-size: 0.9rem;">"Объясни ООП на примерах"</p>
+                    </div>
+                    <div>
+                        <p style="margin: 5px 0; font-size: 0.9rem;">"Разбери задачу №27 из ЕГЭ"</p>
+                        <p style="margin: 5px 0; font-size: 0.9rem;">"Как оптимизировать этот алгоритм?"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Сохраненный JS код без изменений
+        const form = document.getElementById('questionForm');
+        const answerDiv = document.getElementById('answer');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const question = document.getElementById('question').value;
+            answerDiv.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> ИИ обрабатывает запрос...</div>';
+
+            const eventSource = new EventSource(`/stream?question=${encodeURIComponent(question)}`);
+
+            eventSource.onmessage = function(event) {
+                if (answerDiv.querySelector('.loading')) {
+                    answerDiv.innerHTML = '';
+                }
+                answerDiv.innerHTML += event.data;
+                if (MathJax.typeset) {
+                    MathJax.typeset([answerDiv]);
+                }
+            };
+
+            eventSource.onerror = function() {
+                eventSource.close();
+                if (answerDiv.querySelector('.loading')) {
+                    answerDiv.innerHTML = '<div class="error"><i class="fas fa-exclamation-triangle"></i> Произошла ошибка при обработке запроса</div>';
+                }
+            };
+        });
+    </script>
+
+    <style>
+        /* Анимации и дополнительные стили */
+        #question:focus {
+            outline: none;
+            border-color: #4070f4;
+            box-shadow: 0 0 0 2px rgba(64, 112, 244, 0.2);
+        }
+
+        button[type="submit"]:hover {
+            background: #3058c4 !important;
+            transform: translateY(-1px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #4070f4;
+            font-size: 1rem;
+        }
+
+        .loading i {
+            margin-right: 10px;
+        }
+
+        .error {
+            text-align: center;
+            padding: 20px;
+            color: #e74c3c;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .info-section > div {
+                grid-template-columns: 1fr !important;
+            }
+
+            .examples > div {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</main>
+{% endblock %}

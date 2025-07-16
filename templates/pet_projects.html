@@ -1,0 +1,472 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>InformPRO - Идеи для пет-проектов</title>{% endblock %}
+{% block description %}<meta name="description" content="Подборка интересных проектов на Python для разных уровней подготовки. От простых калькуляторов до нейросетевых приложений.">{% endblock %}
+
+{% block content %}
+<div class="projects-container">
+    <div class="projects-header">
+        <h1><i class='bx bx-code-curly'></i> Идеи для пет-проектов на Python</h1>
+        <p class="subtitle">Выбери проект по своему уровню и освой новые технологии на практике</p>
+    </div>
+
+    <div class="difficulty-tabs">
+        <button class="tab-btn active" data-level="beginner">Начинающий</button>
+        <button class="tab-btn" data-level="intermediate">Средний</button>
+        <button class="tab-btn" data-level="advanced">Продвинутый</button>
+        <button class="tab-btn" data-level="expert">Эксперт</button>
+    </div>
+
+    <div class="projects-content">
+        <!-- Уровень 1: Начинающий -->
+        <div class="level-section" id="beginner" style="display: block;">
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #ffebee;">
+                    <i class='bx bx-calculator' style="color: #f44336;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Калькулятор</h3>
+                    <div class="project-description">
+                        <p>Простое приложение калькулятора для базовых математических операций.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">tkinter</span>
+                            <span class="tech-tag">math</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Разработать интерфейс с кнопками</li>
+                            <li>Реализовать основные операции(сложение, вычитание, деление, умножение)</li>
+                            <li>Добавить обработку ошибок(деление на ноль и тд)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #e8f5e9;">
+                    <i class='bx bx-bot' style="color: #4caf50;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Чат-бот для Telegram</h3>
+                    <div class="project-description">
+                        <p>Создание простого чат-бота для Telegram, который смотрит погоду, парсит страницу с вакансиями или обертка для ChatGPT.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">pyTelegramBotApi</span>
+                            <span class="tech-tag">requests</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Зарегистрировать бота в BotFather и получить токен</li>
+                            <li>Настроить ответы на команды</li>
+                            <li>Добавить функцию времени/погоды</li>
+                            <li>Реализовать простое меню с кнопками/командами</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #e8f5e9;">
+                    <i class='bx bx-time' style="color: #FF9800;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Планировщик задач</h3>
+                    <div class="project-description">
+                        <p>Простое приложение для планирования задач с возможностью напоминаний.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">tkinter</span>
+                            <span class="tech-tag">datetime</span>
+                            <span class="tech-tag">sqlite</span>
+                            <span class="tech-tag">plyer</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Реализовать добавление, удаление задач, также их хранение в базе данных SQLite</li>
+                            <li>Напоминание для задач</li>
+                            <li>Настроить планировщик времени (scheduler)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Уровень 2: Средний -->
+        <div class="level-section" id="intermediate">
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #e3f2fd;">
+                    <i class='bx bx-globe' style="color: #2196f3;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Парсер веб-страниц</h3>
+                    <div class="project-description">
+                        <p>Извлечение данных с веб-страниц (новости, цены товаров).</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">BeautifulSoup</span>
+                            <span class="tech-tag">requests</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Настроить парсинг HTML-структуры</li>
+                            <li>Реализовать сохранение данных в CSV</li>
+                            <li>Добавить фильтрацию контента</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #fff8e1;">
+                    <i class='bx bx-task' style="color: #9C27B0;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>To-Do список с БД</h3>
+                    <div class="project-description">
+                        <p>Приложение для управления задачами с хранением в SQLite.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">tkinter / pyqt6 / pyside6</span>
+                            <span class="tech-tag">sqlite3</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Создать интерфейс для задач</li>
+                            <li>Настроить CRUD-операции(create, read, update, delete)</li>
+                            <li>Реализовать сортировку</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #fff8e1;">
+                    <i class='bx bx-game' style="color: #FF5722;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Простая 2d/3d игра</h3>
+                    <div class="project-description">
+                        <p>Своя собственная игра на Python</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">PyGame / Ursina / Panda3D / Ren'Py</span>
+                            <span class="tech-tag">sqlite3</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Прописать базовую логику(управление, столкновения)</li>
+                            <li>Реализация меню и паузы</li>
+                            <li>Хранение рекордов в базе данных</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Уровень 3: Продвинутый -->
+        <div class="level-section" id="advanced">
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #f3e5f5;">
+                    <i class='bx bx-brain' style="color: #607D8B;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Рекомендательная система</h3>
+                    <div class="project-description">
+                        <p>Система рекомендаций фильмов/книг на основе ML.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">pandas</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">numpy</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Подготовить набор данных</li>
+                            <li>Обучить модель рекомендаций</li>
+                            <li>Визуализировать результаты</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #f3e5f5;">
+                    <i class='bx bx-sitemap' style="color: #795548;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Веб-приложение (например, блог или социальная сеть)</h3>
+                    <div class="project-description">
+                        <p>Разработка полноценного веб-приложения с базой данных, пользователями и авторизацией.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Flask/Django/FastApi</span>
+                            <span class="tech-tag">SQLAlchemy</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Прописать основные пути</li>
+                            <li>Реализовать базу данных с пользователями(регистрация, логин)</li>
+                            <li>Опубликовать на хостинг(Vercel, Render, Replit)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #f3e5f5;">
+                    <i class='bx bx-pie-chart-alt' style="color: #E91E63;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Проект на основе машинного обучения (например, классификация текста)</h3>
+                    <div class="project-description">
+                        <p>Разработка модели, которая классифицирует текст (например, спам или не спам).</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">pandas</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">nltk</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Подготовить набор данных</li>
+                            <li>Обучить модель</li>
+                            <li>Оценка лучшей модели</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Уровень 4: Эксперт -->
+        <div class="level-section" id="expert">
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #e8f5e9;">
+                    <i class='bx bx-network-chart' style="color: #2e7d32;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Игра с ИИ на нейросетях</h3>
+                    <div class="project-description">
+                        <p>Обучение нейросети для игры в простые игры.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">pygame</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Создать игровую среду</li>
+                            <li>Разработать архитектуру модели</li>
+                            <li>Обучить ИИ играть</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #e8f5e9;">
+                    <i class='bx bx-chat' style="color: #3F51B5;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Реализация чат-бота с использованием NLP</h3>
+                    <div class="project-description">
+                        <p>Разработка умного чат-бота, который использует обработку естественного языка для понимания и генерации ответов.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">nltk</span>
+                            <span class="tech-tag">transformers/g4f</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Использование моделей, таких как GPT, для генерации ответов на сообщения</li>
+                            <li>Реализация диалоговой системы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background-color: #e8f5e9;">
+                    <i class='bx bx-image' style="color: #CDDC39;"></i>
+                </div>
+                <div class="project-details">
+                    <h3>Приложение для распознавания объектов на изображениях</h3>
+                    <div class="project-description">
+                        <p>Система для распознавания объектов на изображениях или видео.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">OpenCV</span>
+                        </div>
+                        <ul class="project-tasks">
+                            <li>Реализовать модель для классификации объектов на изображениях</li>
+                            <li>Использовать предобученные модели для улучшения точности</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .projects-container {
+        margin-top: 70px;
+        padding: 20px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .projects-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .projects-header h1 {
+        font-size: 2rem;
+        color: #2d3748;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    @media (max-width: 625px) {
+      .projects-header h1 {
+        font-size: 1.4rem;
+      }
+    }
+
+    .subtitle {
+        color: #4a5568;
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .difficulty-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background: #edf2f7;
+        color: #4a5568;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .tab-btn:hover {
+        background: #e2e8f0;
+    }
+
+    .tab-btn.active {
+        background: #6a11cb;
+        color: white;
+    }
+
+    .project-card {
+        display: flex;
+        gap: 20px;
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .project-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .project-icon i {
+        font-size: 28px;
+    }
+
+    .project-details {
+        flex-grow: 1;
+    }
+
+    .project-details h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #2d3748;
+    }
+
+    .project-description p {
+        color: #4a5568;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .tech-stack {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .tech-tag {
+        background: #edf2f7;
+        color: #2d3748;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    .project-tasks {
+        padding-left: 20px;
+        margin: 0;
+        color: #4a5568;
+    }
+
+    .project-tasks li {
+        margin-bottom: 6px;
+        position: relative;
+    }
+
+    .project-tasks li::before {
+        content: "•";
+        color: #6a11cb;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    @media (max-width: 768px) {
+        .project-card {
+            flex-direction: column;
+        }
+
+        .project-icon {
+            margin-bottom: 15px;
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.level-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById('beginner').style.display = 'block';
+    // Переключение между уровнями сложности
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Удаляем активный класс у всех кнопок
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
+
+            // Скрываем все разделы
+            document.querySelectorAll('.level-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Показываем нужный раздел
+            const level = this.getAttribute('data-level');
+            document.getElementById(level).style.display = 'block';
+        });
+    });
+</script>
+{% endblock %}

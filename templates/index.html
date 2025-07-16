@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>InformPRO - Главная</title>
+  <meta name="description" content="InformPRO - Образовательная платформа для изучения информатики и программирования">
+{% endblock %}
+
+{% block content %}
+  <main style="margin-top: 80px; padding: 20px;">
+    <!-- Герой-секция -->
+
+    <section class="hero" style="background: linear-gradient(135deg, #8a2be2 0%, #4b6cb7 100%);
+                                color: white;
+                                padding: 4rem 2rem;
+                                border-radius: 12px;
+                                text-align: center;
+                                margin-bottom: 2rem;">
+<!--        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Добро пожаловать в InformPRO</h1>-->
+        <h1 style="display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1rem;"><img style="margin-right: 3px; width: 50px; height: auto" src="/static/favicon_white.png"> InformPRO</h1>
+        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+            Платформа для изучения информатики, программирования и подготовки к экзаменам
+        </p>
+    </section>
+
+    <!-- Карточки разделов -->
+    <div class="features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
+      <!-- Онлайн-компилятор -->
+      <div class="card" style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+        <div style="background: #4070f4; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+          <i class="bx bx-code" style="font-size: 24px; color: white;"></i>
+        </div>
+        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Онлайн-компилятор</h3>
+        <p style="color: #666; margin-bottom: 20px;">
+          Пишите и запускайте код на Python прямо в браузере. Идеально для практики и экспериментов.
+        </p>
+        <a href="/online-compiler" style="display: inline-block; background: #4070f4; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none;">Попробовать</a>
+      </div>
+
+      <!-- Подготовка к экзаменам -->
+      <div class="card" style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+        <div style="background: #4CAF50; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+          <i class="bx bx-book" style="font-size: 24px; color: white;"></i>
+        </div>
+        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">ОГЭ/ЕГЭ</h3>
+        <p style="color: #666; margin-bottom: 20px;">
+          Разбор заданий, теория и практические тесты для подготовки к экзаменам по информатике.
+        </p>
+        <a href="/exams" style="display: inline-block; background: #4CAF50; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none;">Начать подготовку</a>
+      </div>
+
+      <!-- ChatGPT помощник -->
+      <div class="card" style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+        <div style="background: #9C27B0; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+          <i class="bx bx-message" style="font-size: 24px; color: white;"></i>
+        </div>
+        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">AI Помощник</h3>
+        <p style="color: #666; margin-bottom: 20px;">
+          Получите помощь в изучении программирования от нашего AI-ассистента.
+        </p>
+        <a href="/programming-chatbot" style="display: inline-block; background: #9C27B0; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none;">Задать вопрос</a>
+      </div>
+    </div>
+
+    <!-- Последние новости/обновления -->
+    <section class="updates" style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 40px;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 15px; color: #333;">Последние обновления</h2>
+      <ul style="list-style: none;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
+          <i class="bx bx-check-circle" style="color: #4CAF50; margin-right: 10px;"></i>
+          <span>Добавлен новый раздел с <a style="text-decoration: None;" href="/pet-projects">идеями для пет-проектов</span></a>
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
+          <i class="bx bx-check-circle" style="color: #4CAF50; margin-right: 10px;"></i>
+          <span>Добавлена <a style="text-decoration: None;" href="/theory/python">теория по Python</span></a>
+        </li>
+        <li style="padding: 10px 0; display: flex; align-items: center;">
+          <i class="bx bx-check-circle" style="color: #4CAF50; margin-right: 10px;"></i>
+          <span>Добавлен <a style="text-decoration: None;" href="/online-compiler">онлайн-компилятор</span></a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Призыв к действию -->
+    <section class="cta" style="text-align: center; background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%); padding: 30px; border-radius: 12px; color: white;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Начните обучение прямо сейчас!</h2>
+      <p style="margin-bottom: 20px; font-size: 1.1rem;">
+        Станьте одним из первых, кто использует InformPRO для изучения информатики и программирования
+      </p>
+      <a href="/theory" style="display: inline-block; background: white; color: #4070f4; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: 500;">Начать программировать</a>
+    </section>
+  </main>
+
+  <style>
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+{% endblock %}

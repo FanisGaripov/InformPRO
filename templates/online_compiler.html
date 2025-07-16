@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>InformPRO - Онлайн компилятор Python</title>{% endblock %}
+{% block description %}<meta name="description" content="Запускайте код Python прямо в браузере. Полнофункциональный онлайн-компилятор с подсветкой синтаксиса и возможностью сохранять код.">{% endblock %}
+
+{% block content %}
+<div class="compiler-container">
+    <!-- Заголовок с навигацией -->
+    <div class="compiler-header">
+        <h1><i class='bx bx-code-alt'></i> Онлайн компилятор Python</h1>
+    </div>
+
+    <!-- Основной блок с компилятором -->
+    <div class="compiler-wrapper">
+        <iframe
+            src="https://onecompiler.com/embed/python?theme=light"
+            class="compiler-frame"
+            title="Online Python Compiler"
+            allow="clipboard-write"
+        ></iframe>
+    </div>
+
+    <!-- Дополнительная информация -->
+    <div class="compiler-info">
+        <div class="info-card">
+            <i class='bx bx-run'></i>
+            <h3>Как использовать</h3>
+            <ul>
+                <li>Вводите код в левой панели</li>
+                <li>Нажмите "Run" для выполнения</li>
+                <li>Результат появится в правой части(или в панели i/o на маленьком устройстве)</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <i class='bx bx-bookmark'></i>
+            <h3>Возможности</h3>
+            <ul>
+                <li>Cохранение кода</li>
+                <li>Подсветка синтаксиса</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <i class='bx bx-help-circle'></i>
+            <h3>Советы</h3>
+            <ul>
+                <li>Используйте Ctrl+Enter для быстрого запуска</li>
+                <li>Сохраняйте код через меню Share</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .compiler-container {
+        margin-top: 70px;
+        padding: 20px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .compiler-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .compiler-header h1 {
+        font-size: 1.8rem;
+        color: #2d3748;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0;
+    }
+
+    .compiler-wrapper {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin-bottom: 30px;
+    }
+
+    .compiler-frame {
+        width: 100%;
+        height: 700px;
+        border: none;
+        display: block;
+    }
+
+    .compiler-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .info-card {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-card i {
+        font-size: 24px;
+        color: #6a11cb;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .info-card h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #2d3748;
+    }
+
+    .info-card ul {
+        padding-left: 20px;
+        margin: 0;
+        color: #4a5568;
+    }
+
+    .info-card li {
+        margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .compiler-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .compiler-frame {
+            height: 500px;
+        }
+    }
+</style>
+{% endblock %}

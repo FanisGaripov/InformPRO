@@ -1,0 +1,312 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>InformPRO - Генератор задач по программированию</title>{% endblock %}
+{% block description %}<meta name="description" content="Интерактивный генератор задач по программированию с автоматической проверкой решений">{% endblock %}
+
+{% block content %}
+<div class="task-generator-container">
+    <div class="generator-header">
+        <h1><i class='bx bx-code-alt'></i> Генератор задач</h1>
+        <p class="subtitle">Выбери сложность и получи уникальную задачу</p>
+    </div>
+
+    <form method="POST" class="generator-form">
+        <div class="form-group">
+            <label for="lvl"><i class='bx bx-layer'></i> Уровень сложности:</label>
+            <select name="lvl" id="lvl" class="form-select">
+                <option value="легкая">Легкая</option>
+                <option value="средняя">Средняя</option>
+                <option value="сложная">Сложная</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="topic"><i class='bx bx-category'></i> Тема (опционально):</label>
+            <input type="text" name="topic" id="topic" placeholder="Например: циклы, списки, ООП" class="form-input">
+        </div>
+
+        <button type="submit" class="generate-btn">
+            <i class='bx bx-cycling'></i> Сгенерировать задачу
+        </button>
+    </form>
+
+    {% if condition %}
+    <div class="task-card">
+        <div class="task-header">
+            <h3><i class='bx bx-task'></i> Условие задачи</h3>
+            <span class="difficulty-badge">{{ difficulty_icon|safe }} {{ lvl }}</span>
+        </div>
+
+        <div class="task-content">
+            <p>{{ condition }}</p>
+
+            <div class="test-cases">
+                <h4><i class='bx bx-checkbox-checked'></i> Тестовые примеры:</h4>
+                <div class="test-case-grid">
+                    {% for test in tests %}
+                    <div class="test-case">
+                        <span class="input">Ввод: <code>{{ test['ввод'] }}</code></span>
+                        <span class="output">Вывод: <code>{{ test['вывод'] }}</code></span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button class="show-solution-btn" onclick="toggleSolution()">
+                <i class='bx bx-show'></i> Показать решение
+            </button>
+
+            <div class="solution-container" id="solutionContainer" style="display: none;">
+                <h4><i class='bx bx-check-circle'></i> Решение:</h4>
+                <pre class="solution-code">{{ solution }}</pre>
+                <button class="copy-btn" onclick="copySolution()">
+                    <i class='bx bx-copy'></i> Копировать
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+    .task-generator-container {
+        max-width: 800px;
+        margin: 70px auto 0;
+        padding: 20px;
+    }
+
+    .generator-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .generator-header h1 {
+        font-size: 2rem;
+        color: #2d3748;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .subtitle {
+        color: #4a5568;
+        font-size: 1.1rem;
+    }
+
+    .generator-form {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #2d3748;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .form-select, .form-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+    .form-select:focus, .form-input:focus {
+        outline: none;
+        border-color: #6a11cb;
+        box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+    }
+
+    .generate-btn {
+        background: #6a11cb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .generate-btn:hover {
+        background: #5a0db3;
+        transform: translateY(-2px);
+    }
+
+    .task-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    .task-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .task-header h3 {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .difficulty-badge {
+        background: #e2e8f0;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .task-content {
+        padding: 20px;
+    }
+
+    .test-cases {
+        margin: 20px 0;
+    }
+
+    .test-cases h4 {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .test-case-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .test-case {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 12px;
+        border-left: 3px solid #6a11cb;
+    }
+
+    .test-case span {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .test-case .input {
+        color: #4a5568;
+    }
+
+    .test-case .output {
+        color: #2d3748;
+        font-weight: 500;
+    }
+
+    .show-solution-btn {
+        background: none;
+        border: 1px solid #6a11cb;
+        color: #6a11cb;
+        border-radius: 8px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+        margin-top: 15px;
+    }
+
+    .show-solution-btn:hover {
+        background: #f3e8ff;
+    }
+
+    .solution-container {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f8fafc;
+        border-radius: 8px;
+        border: 1px dashed #cbd5e0;
+    }
+
+    .solution-code {
+        background: #2d3748;
+        color: #f8fafc;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+    }
+
+    .copy-btn {
+        background: #6a11cb;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .copy-btn:hover {
+        background: #5a0db3;
+    }
+</style>
+
+<script>
+    function toggleSolution() {
+        const container = document.getElementById('solutionContainer');
+        const btn = document.querySelector('.show-solution-btn');
+
+        if (container.style.display === 'none') {
+            container.style.display = 'block';
+            btn.innerHTML = '<i class="bx bx-hide"></i> Скрыть решение';
+        } else {
+            container.style.display = 'none';
+            btn.innerHTML = '<i class="bx bx-show"></i> Показать решение';
+        }
+    }
+
+    function copySolution() {
+        const solutionText = document.querySelector('.solution-code').textContent;
+        navigator.clipboard.writeText(solutionText).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerHTML = '<i class="bx bx-check"></i> Скопировано!';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="bx bx-copy"></i> Копировать';
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}

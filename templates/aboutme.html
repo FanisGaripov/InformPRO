@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>InformPRO - Обо мне</title>
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="Создатель образовательной сети NaukaPRO: PhysicsPRO, ChemistryPRO, InformPRO.">
+{% endblock %}
+
+{% block content %}
+<style>
+</style>
+<main style="margin-top: 70px; padding: 20px;">
+    <section class="hero" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); 
+                                color: white; 
+                                padding: 4rem 2rem; 
+                                border-radius: 12px; 
+                                text-align: center;
+                                margin-bottom: 2rem;
+                                position: relative;
+                                overflow: hidden;">
+        <div style="position: absolute; 
+                    top: -50px; 
+                    right: -50px; 
+                    width: 200px; 
+                    height: 200px; 
+                    background: rgba(255,255,255,0.1); 
+                    border-radius: 50%;"></div>
+        <div style="position: absolute; 
+                    bottom: -80px; 
+                    left: -80px; 
+                    width: 250px; 
+                    height: 250px; 
+                    background: rgba(255,255,255,0.1); 
+                    border-radius: 50%;"></div>
+        <div style="position: relative; z-index: 1;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">О создателе InformPRO</h1>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                Обо мне, о проекте InformPRO, что такое NaukaPRO
+            </p>
+        </div>
+    </section>
+
+    <div class="main" style="gap: 30px; margin-bottom: 3rem;">
+        <div>
+            <section style="background: white;
+                            border-radius: 12px;
+                            padding: 25px;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                            margin-bottom: 20px;
+                            text-align: center;">
+                <img src="/static/faniska.jpg" alt="Моё фото" style="width: 60%; height: 60%; max-width: 400px;  border-radius: 50%; object-fit: cover; border: 5px solid #f1f1f1; margin-bottom: 20px;">
+                <h2 style="margin-bottom: 10px; color: #333;">Гарипов Фанис Габдуллович</h2>
+                <p style="color: #6a11cb; font-weight: 500; margin-bottom: 15px;">Основатель серии образовательных сайтов NaukaPRO, в том числе InformPRO</p>
+                <p style="color: #666; margin-bottom: 20px; font-size: 0.95rem;">
+                    Ученик 11А класса МБОУ "Рыбно-Слободской гимназии №1", профиль класса: Физико-Математический
+                </p>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <a href="https://vk.com/i_fanis_hello" style="width: 40px; height: 40px; background: #f1f1f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6a11cb; text-decoration: none;">
+                        <i class="fab fa-vk"></i>
+                    </a>
+                    <a href="https://t.me/dontcrymygirl" style="width: 40px; height: 40px; background: #f1f1f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6a11cb; text-decoration: none;">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://github.com/FanisGaripov" style="width: 40px; height: 40px; background: #f1f1f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6a11cb; text-decoration: none;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </section>
+        </div>
+        <div>
+            <section style="background: white;
+                            border-radius: 12px;
+                            padding: 30px;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                            margin-bottom: 20px;">
+                <h2 style="margin-bottom: 20px; color: #333; position: relative;">
+                    <span style="display: inline-block; padding-right: 15px; background: white; position: relative; z-index: 1;">Обо мне</span>
+                    <span style="position: absolute; bottom: 10px; left: 0; width: 100%; height: 2px; background: #f1f1f1; z-index: 0;"></span>
+                </h2>
+                <p style="margin-bottom: 15px; line-height: 1.6; color: #555;">
+                    Привет! Я Гарипов Фанис, создатель InformPRO и сети образовательных платформ NaukaPRO. Сам учусь в 11 классе и на собственном опыте знаю, как сложно бывает разобраться в программировании и подготовке к экзаменам. В свободное время я люблю программировать(писать свои пет-проекты) и пополнять портфолио новыми проектами.
+                </p>
+                <p style="margin-bottom: 15px; line-height: 1.6; color: #555;">
+                </p>
+            </section>
+
+            <section style="background: white;
+                            border-radius: 12px;
+                            padding: 30px;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                            margin-bottom: 20px;">
+                <h2 style="margin-bottom: 20px; color: #333; position: relative;">
+                    <span style="display: inline-block; padding-right: 15px; background: white; position: relative; z-index: 1;">О проекте InformPRO</span>
+                    <span style="position: absolute; bottom: 10px; left: 0; width: 100%; height: 2px; background: #f1f1f1; z-index: 0;"></span>
+                </h2>
+                <p style="margin-bottom: 15px; line-height: 1.6; color: #555;">
+                    InformPRO - это образовательный сайт для помощи в изучении информатики.
+                    Мы создали платформу, где сложные темы по информатике и программированию становятся простыми и понятными. Наша миссия — помочь каждому ученику 7-11 классов освоить IT-навыки через:
+                </p>
+                <p style="margin-bottom: 15px; line-height: 1.6; color: #555;">
+                    Практику в онлайн-компиляторе<br>
+
+                    Разбор реальных задач ЕГЭ/ОГЭ<br>
+
+                    Обучение с AI-помощником<br>
+                    Без зубрежки. Без воды. Только ключевые знания.</p>
+                    <p style="margin-bottom: 15px; line-height: 1.6; color: #555;">Это ученический проект, который должен помочь не только мне, но и всем интересующимся информатикой и желающим сдавать экзамены по этому предмету.
+                </p>
+            </section>
+
+            <section style="background: white;
+                    border-radius: 12px;
+                    padding: 30px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                    margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 20px; color: #333;">Что такое NaukaPRO?</h2>
+                <p style="margin-bottom: 15px; line-height: 1.6; color: #555;">
+                    NaukaPRO - это объединение образовательных проектов, созданных для школьников 7-11 классов и студентов СПО 1-2 курсов.
+                    Её цель - сделать изучение школьных предметов более интересным, увлекательным и результативным!
+                </p>
+                <p style="line-height: 1.6; color: #555;">
+                    Мы используем интерактивные подходы
+                    к обучению, включая визуализации, практические задачи, помогаем подготовиться к основному и единому государственным экзаменам
+                </p>
+            </section>
+        </div>
+    </div>
+    <section style="background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%); 
+                    color: white; 
+                    padding: 3rem 2rem; 
+                    border-radius: 12px; 
+                    text-align: center;
+                    margin-bottom: 2rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">Есть вопросы?</h2>
+        <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem;">
+            Я всегда открыт для общения, вот мои соцсети.
+        </p>
+        <a href="/contacts" style="display: inline-block; 
+                                background: white; 
+                                color: #4CAF50; 
+                                padding: 12px 30px; 
+                                border-radius: 30px; 
+                                text-decoration: none;
+                                font-weight: 600;
+                                transition: all 0.3s ease;">
+            Написать мне
+        </a>
+    </section>
+</main>
+
+
+<script>
+    document.querySelectorAll('div[style*="box-shadow: 0 4px 12px rgba(0,0,0,0.1)"]').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'none';
+        });
+    });
+
+    const ctaButton = document.querySelector('a[href="/contacts"]');
+    ctaButton.addEventListener('mouseenter', () => {
+        ctaButton.style.transform = 'scale(1.05)';
+        ctaButton.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+    });
+    ctaButton.addEventListener('mouseleave', () => {
+        ctaButton.style.transform = 'none';
+        ctaButton.style.boxShadow = 'none';
+    });
+</script>
+{% endblock %}

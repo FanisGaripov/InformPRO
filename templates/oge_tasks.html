@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}<title>InformPRO - {{ category }}</title>{% endblock %}
+{% block description %}<meta name="description" content="InformPRO - Задания ОГЭ по информатике на тему: {{ category }}">{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Задания ОГЭ по теме: {{ category }}</h1>
+    <div class="tasks-container">
+        {% for task in tasks %}
+        <div class="task-item">
+            <h3>Задание {{ loop.index }}</h3>
+            <p><strong>{{ task.type }}</strong></p>
+            <div class="task-text">{{ task.text }}</div>
+            {% if task.image %}
+            <img src="{{ task.image }}" class="task-image" alt="Изображение задания">
+            {% endif %}
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+
+
+<button style="color: black; background-color: white;" id="toggle-compiler" class="compiler-toggle-btn">🖥️ Редактор кода</button>
+
+<div class="compiler-wrapper" id="compiler-wrapper">
+    <iframe
+        src="https://onecompiler.com/embed/python?theme=light"
+        class="compiler-frame"
+        title="Online Python Compiler"
+        allow="clipboard-write"
+    ></iframe>
+</div>
+
+<style>
+    .image-container {
+        text-align: center; /* Центрируем изображения */
+        margin: 1.5rem 0; /* Отступы сверху и снизу */
+    }
+
+    .content-image {
+        max-width: 100%; /* Ограничиваем максимальную ширину */
+        height: auto; /* Автоматическая высота для сохранения пропорций */
+        border-radius: 10px; /* Закругляем углы изображений */
+    }
+
+    .content-text {
+        margin: 1.5rem 0; /* Отступы для текста */
+        line-height: 1.6; /* Высота строки для лучшей читаемости */
+    }
+    .container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-top: 70px;
+        transition: margin-right 0.3s ease; /* Анимация сдвига */
+    }
+
+    .compiler-wrapper {
+        position: fixed;
+        top: 0;
+        right: -50%; /* Изначально скрыт */
+        width: 50%;
+        height: 100vh;
+        background: white;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: right 0.3s ease;
+        overflow: hidden;
+    }
+
+    .compiler-wrapper.active {
+        right: 0;
+    }
+
+    .compiler-active .container {
+        margin-right: 50%;
+    }
+
+    .compiler-toggle-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 10px 15px;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .compiler-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    @media (max-width: 768px) {
+        .compiler-wrapper {
+            width: 80%;
+            right: -80%;
+        }
+        .compiler-active .container {
+            margin-right: 80%;
+        }
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('toggle-compiler');
+        const compilerWrapper = document.getElementById('compiler-wrapper');
+        const container = document.querySelector('.container');
+
+        toggleBtn.addEventListener('click', function() {
+            compilerWrapper.classList.toggle('active');
+            document.body.classList.toggle('compiler-active');
+            toggleBtn.textContent = compilerWrapper.classList.contains('active') ? '✖ Закрыть' : '🖥️ Редактор кода';
+        });
+    });
+</script>
+{% endblock %}

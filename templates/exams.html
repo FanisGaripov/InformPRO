@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}<title>InformPRO - ОГЭ/ЕГЭ по информатике</title>{% endblock %}
+{% block description %}<meta name="description" content="Каталоги и задания ОГЭ/ЕГЭ по информатике на InformPRO">{% endblock %}
+
+{% block content %}
+<style>
+    .theory-container {
+        max-width: 1200px;
+        margin: 80px auto 40px;
+        padding: 0 20px;
+    }
+
+    .theory-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .theory-header h1 {
+        font-size: 2.2rem;
+        color: #2d3748;
+        margin-bottom: 15px;
+    }
+
+    .theory-header p {
+        color: #4a5568;
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .theory-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .theory-card {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+        border-top: 4px solid;
+    }
+
+    .theory-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .theory-card.python {
+        border-color: #4070f4;
+    }
+
+    .theory-card.sql {
+        border-color: #f4b740;
+    }
+
+    .theory-card.ip {
+        border-color: #40f470;
+    }
+
+    .theory-card.crypto {
+        border-color: #f44070;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 24px;
+        color: white;
+    }
+
+    .python .card-icon {
+        background: #4070f4;
+    }
+
+    .sql .card-icon {
+        background: #f4b740;
+    }
+
+    .ip .card-icon {
+        background: #40f470;
+    }
+
+    .crypto .card-icon {
+        background: #f44070;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        margin: 0;
+        color: #2d3748;
+    }
+
+    .card-description {
+        color: #4a5568;
+        margin-bottom: 25px;
+    }
+
+    .topics-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .topics-list li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 25px;
+    }
+
+    .topics-list li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: inherit;
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
+    .python .topics-list li:before {
+        color: #4070f4;
+    }
+
+    .sql .topics-list li:before {
+        color: #f4b740;
+    }
+
+    .ip .topics-list li:before {
+        color: #40f470;
+    }
+
+    .crypto .topics-list li:before {
+        color: #f44070;
+    }
+
+    .card-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 8px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+    }
+
+    .python .card-link {
+        background: #f1f5ff;
+        color: #4070f4;
+    }
+
+    .python .card-link:hover {
+        background: #4070f4;
+        color: white;
+    }
+
+    .sql .card-link {
+        background: #fff4e5;
+        color: #f4b740;
+    }
+
+    .sql .card-link:hover {
+        background: #f4b740;
+        color: white;
+    }
+
+    .ip .card-link {
+        background: #e6ffed;
+        color: #40f470;
+    }
+
+    .ip .card-link:hover {
+        background: #40f470;
+        color: white;
+    }
+
+    .crypto .card-link {
+        background: #ffe6ee;
+        color: #f44070;
+    }
+
+    .crypto .card-link:hover {
+        background: #f44070;
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .theory-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="theory-container">
+    <div class="theory-header">
+        <h1><i class='bx bx-book-open'></i> Экзамены по информатике</h1>
+        <p>Полные экзаменационные каталоги и задания ОГЭ/ЕГЭ по информатике</p>
+    </div>
+
+    <div class="theory-grid">
+
+        <div class="theory-card crypto">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fa-solid fa-9"></i>
+                </div>
+                <h2 class="card-title">ОГЭ</h2>
+            </div>
+            <p class="card-description">
+                Подготовка к Основному государственному экзамену по информатике.
+            </p>
+            <ul class="topics-list">
+                <li>Основы информатики</li>
+                <li>Алгоритмы и структуры данных</li>
+                <li>Excel таблицы</li>
+                <li>Анализ данных</li>
+                <li>Программирование</li>
+            </ul>
+            <a href="/exams/oge" class="card-link">
+                Перейти к каталогу <i class='bx bx-chevron-right'></i>
+            </a>
+        </div>
+
+
+        <div class="theory-card sql">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fa-solid fa-1"></i><i class="fa-solid fa-1"></i>
+                </div>
+                <h2 class="card-title">ЕГЭ</h2>
+            </div>
+            <p class="card-description">
+                Подготовка к Единому государственному экзамену по информатике.
+            </p>
+            <ul class="topics-list">
+                <li>Основы информатики и информационных технологий</li>
+                <li>Алгоритмы и программирование</li>
+                <li>Работа с БД</li>
+                <li>Компьютерные сети</li>
+                <li>Кибербезопасность и защита информации</li>
+            </ul>
+            <a href="/exams/ege" class="card-link">
+                Перейти к каталогу <i class='bx bx-chevron-right'></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
