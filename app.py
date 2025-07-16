@@ -331,9 +331,10 @@ def aboutme():
     return render_template('aboutme.html')
 
 
-@app.route('/aboutme/projects')
-def my_projects():
-    return render_template('my_projects.html')
+@app.route('/yandex_39130c2f533a2bf4.html')
+def ya():
+    user = flask_login.current_user
+    return render_template('yandex_39130c2f533a2bf4.html', user=user)
 
 
 @app.route('/contacts')
