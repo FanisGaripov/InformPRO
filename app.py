@@ -333,6 +333,7 @@ def aboutme():
 
 @app.route('/yandex_39130c2f533a2bf4.html')
 def ya():
+    # подтверждение яндекс
     return render_template('yandex_39130c2f533a2bf4.html')
 
 
