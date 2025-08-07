@@ -21,6 +21,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/sitemap.xml')
+def sitemap():
+    return app.send_static_file('sitemap_informpro.xml')
+
+
 @app.route('/online-compiler')
 def online_compiler():
     return render_template('online_compiler.html')
@@ -344,3 +349,4 @@ def contacts():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
+
