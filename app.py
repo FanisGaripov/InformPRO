@@ -342,6 +342,11 @@ def ya():
     return render_template('yandex_39130c2f533a2bf4.html')
 
 
+@app.route('/googled5c4e477b332cb57.html')
+def google():
+    return render_template('googled5c4e477b332cb57.html')
+
+
 @app.route('/contacts')
 def contacts():
     return render_template('contacts.html')
@@ -349,4 +354,5 @@ def contacts():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
+
 
